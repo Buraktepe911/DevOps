@@ -17,3 +17,7 @@ Een eenvoudige webapp maken met Python (Flask) en HTML webforms.
 ```bash
 cd ~/labs/devnet-src/ap4-webform
 python3 app.py
+
+## browser
+
+- http://127.0.0.1:5002/
