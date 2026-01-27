@@ -1,0 +1,11 @@
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Tue 2026-01-27 15:26:53 UTC; 1min 41s ago
+       Docs: https://httpd.apache.org/docs/2.4/
+   Main PID: 15695 (code=exited, status=0/SUCCESS)
+
+Jan 27 14:33:18 labvm systemd[1]: Starting The Apache HTTP Server...
+Jan 27 14:33:18 labvm systemd[1]: Started The Apache HTTP Server.
+Jan 27 15:26:53 labvm systemd[1]: Stopping The Apache HTTP Server...
+Jan 27 15:26:53 labvm systemd[1]: apache2.service: Succeeded.
+Jan 27 15:26:53 labvm systemd[1]: Stopped The Apache HTTP Server.

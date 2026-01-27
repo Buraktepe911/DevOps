@@ -1,0 +1,38 @@
+---
+- name: A3 - Andere server (Nginx)
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Stop apache2 zodat poort 80 vrij is
+      service:
+        name: apache2
+        state: stopped
+      ignore_errors: yes
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        update_cache: yes
+        state: latest
+
+    - name: Zorg dat nginx draait en enabled is
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Plaats eigen index.html (A3)
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <html>
+            <head><title>A3 Andere Server</title></head>
+            <body style="font-family: Arial;">
+              <h1>A3 - Nginx Webserver</h1>
+              <p>Deze pagina is uitgerold met Ansible.</p>
+            </body>
+          </html>
+        owner: root
+        group: root
+        mode: "0644"
