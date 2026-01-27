@@ -1,0 +1,36 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Cleanup') {
+      steps {
+        sh 'docker rm -f j2-di2 || true'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'cd /home/devasc/labs/DevOps/Docker/Di2_Eigen_WebService && docker build -t di2-webservice:j2 .'
+      }
+    }
+
+    stage('Run') {
+      steps {
+        sh 'docker run -d -p 8090:8081 --name j2-di2 di2-webservice:j2'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'curl -s http://127.0.0.1:8090/api/status | grep -i running'
+        sh 'curl -s "http://127.0.0.1:8090/api/echo?msg=j2" | grep -i j2'
+      }
+    }
+  }
+
+  post {
+    always {
+      sh 'docker rm -f j2-di2 || true'
+    }
+  }
+}
