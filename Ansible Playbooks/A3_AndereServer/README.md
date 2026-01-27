@@ -59,3 +59,17 @@ Test 3 – Curl test
 Test via terminal:
 
 curl http://192.0.2.3
+## Opmerking over A3 en A2 (belangrijk)
+A3 gebruikt **Nginx** als webserver, terwijl A2 **Apache** gebruikt.
+Beide services gebruiken standaard **poort 80** en kunnen daarom niet
+tegelijk actief zijn.
+
+Als A3 getest wordt **na A2**, moet Apache eerst gestopt worden.
+
+Gebruik hiervoor de volgende commando’s:
+
+```bash
+sudo systemctl stop apache2
+sudo systemctl disable apache2
+sudo systemctl start nginx
+sudo systemctl enable nginx
