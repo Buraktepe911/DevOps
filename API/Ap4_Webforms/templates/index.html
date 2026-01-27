@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ap4 Webform</title>
+  </head>
+  <body>
+    <h1>Ap4 – Webform</h1>
+
+    <form action="/submit" method="post">
+      <label>Name:</label><br />
+      <input type="text" name="name" placeholder="Your name" /><br /><br />
+
+      <label>Category:</label><br />
+      <select name="category">
+        <option value="">-- choose --</option>
+        <option value="joke">Joke</option>
+        <option value="quote">Quote</option>
+        <option value="info">Info</option>
+      </select><br /><br />
+
+      <button type="submit">Send</button>
+    </form>
+  </body>
+</html>
