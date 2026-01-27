@@ -42,3 +42,16 @@ Test 1 – Browser test
 Open Chromium en ga naar:
 
 http://192.0.2.3
+## Opmerking over A2 en A3 (belangrijk)
+A2 (Apache) en A3 (Nginx) gebruiken **beide poort 80**.
+Daarom kan Apache niet starten als Nginx nog actief is.
+
+Als A2 getest wordt **na A3**, moet Nginx eerst gestopt worden.
+
+Gebruik hiervoor de volgende commando’s:
+
+```bash
+sudo systemctl stop nginx
+sudo systemctl disable nginx
+sudo systemctl start apache2
+sudo systemctl enable apache2
