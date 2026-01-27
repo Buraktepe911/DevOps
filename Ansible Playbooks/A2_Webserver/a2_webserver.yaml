@@ -1,0 +1,32 @@
+---
+- name: A2 - Apache webserver + eigen pagina
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install apache2
+      apt:
+        name: apache2
+        update_cache: yes
+        state: latest
+
+    - name: Zorg dat apache2 draait en enabled is
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Plaats eigen index.html (A2)
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <html>
+            <head><title>A2 Webserver</title></head>
+            <body style="font-family: Arial;">
+              <h1>A2 - Apache Webserver</h1>
+              <p>Deze pagina is uitgerold met Ansible.</p>
+            </body>
+          </html>
+        owner: root
+        group: root
+        mode: "0644"
