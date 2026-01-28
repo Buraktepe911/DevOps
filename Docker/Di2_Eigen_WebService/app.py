@@ -21,5 +21,4 @@ def echo():
     return jsonify({"echo": msg})
 
 if __name__ == "__main__":
-    # threaded=False om thread issues te vermijden op deze VM
     app.run(host="0.0.0.0", port=8081, threaded=False)
